@@ -17,8 +17,8 @@ const Table = ({tableData}) => {
       </thead>
       <tbody>
         {
-          tableData.map(rowData => {
-            return <tr key={rowData.id}>{Object.values(rowData).map((cellData)=><TableCell content={cellData}></TableCell>)}</tr>
+          tableData.map((rowData, index) => {
+            return <tr key={rowData.id ? rowData.id : index}>{Object.values(rowData).map((cellData, index)=><TableCell key={index} content={cellData}></TableCell>)}</tr>
           })
         }
       </tbody>
@@ -28,7 +28,6 @@ const Table = ({tableData}) => {
 
 const TableCell = ({content}) => {
   const needTable = typeof(content) === 'object';
-  console.log(typeof(content))
   return (
     <td>
       {needTable?(<div><Table tableData={[content]}></Table></div>) : (<div>{content}</div>)}
