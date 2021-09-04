@@ -3,22 +3,22 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import axios from 'axios';
 
-const Table = ({props}) => {
+const Table = ({tableData}) => {
 
 
   return (
     <table>
       <thead>
         <tr>
-          {Object.keys(props[0]).map((header, index) => {
+          {Object.keys(tableData[0]).map((header, index) => {
             return <td key={index}>{header}</td>
           })}
         </tr>
       </thead>
       <tbody>
         {
-          props.map(row => {
-            return <tr key={row.id}></tr>
+          tableData.map(rowData => {
+            return <tr key={rowData.id}>{Object.values(rowData).map((cellData)=><TableCell content={cellData}></TableCell>)}</tr>
           })
         }
       </tbody>
@@ -26,6 +26,15 @@ const Table = ({props}) => {
   )
 }
 
+const TableCell = ({content}) => {
+  const needTable = typeof(content) === 'object';
+  console.log(typeof(content))
+  return (
+    <td>
+      {needTable?(<div><Table tableData={[content]}></Table></div>) : (<div>{content}</div>)}
+    </td>
+  )
+}
 
 
 const RecordsTable = () => {
@@ -46,7 +55,7 @@ const RecordsTable = () => {
 
 
   return (
-    <div>{tableData ? (<Table props={tableData}></Table>) : ('Loading...')}</div>
+    <div>{tableData ? (<Table tableData={tableData}></Table>) : ('Loading...')}</div>
   );
 };
 
