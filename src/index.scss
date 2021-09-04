@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+$green: #55761a;
+$lightGreen: #dfe49b;
+
+.container {
+  margin: 0 auto;
+  padding: 0 5px;
+  overflow-x: scroll;
+}
+
+.table{
+  min-width: 100%;
+  border-collapse: collapse;
+  font-family: 'Roboto', sans-serif;
+  background-color: $lightGreen;
+  border: 1px solid #000;
+  text-align: center;
+  & thead{
+    height: 40px;
+    background-color: #55761a;
+    color: #fff;
+    font-weight: 500; 
+    text-transform: capitalize;
+
+  }
+  & td {
+    padding:5px;
+  }
+}
+

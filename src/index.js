@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.scss';
 import axios from 'axios';
 
 const Table = ({tableData}) => {
 
 
   return (
-    <table>
+    <table className="table">
       <thead>
         <tr>
           {Object.keys(tableData[0]).map((header, index) => {
@@ -55,7 +55,7 @@ const RecordsTable = () => {
 
 
   return (
-    <div>{tableData ? (<Table tableData={tableData}></Table>) : ('Loading...')}</div>
+    <div className="container">{tableData ? (<Table  tableData={tableData}></Table>) : ('Loading...')}</div>
   );
 };
 
